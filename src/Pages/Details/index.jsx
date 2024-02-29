@@ -4,12 +4,8 @@ import { GlobalContext } from "../../Context";
 
 export default function Details() {
   const { id } = useParams();
-  const {
-    recipeDetailsData,
-    setRecipeDetailsData,
-    handleAddToFavorite,
-    FavoritesList,
-  } = useContext(GlobalContext);
+  const { recipeDetailsData, setRecipeDetailsData, handleAddToFavorite, FavoritesList } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     async function getRecipeDetails() {
@@ -49,13 +45,9 @@ export default function Details() {
             onClick={() => handleAddToFavorite(recipeDetailsData?.data?.recipe)}
             className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block shadow-md bg-black text-white"
           >
-            {FavoritesList &&
-            FavoritesList.length > 0 &&
-            FavoritesList.findIndex(
-              (item) => item.id === recipeDetailsData?.recipe?.id
-            ) !== -1
-              ? "Remove from favorites"
-              : "Add to favorites"}
+            {
+              FavoritesList.includes(recipeDetailsData?.data?.recipe) ? "Remove from Favorites" : "Add to Favorites"
+            }
           </button>
         </div>
         <div>
