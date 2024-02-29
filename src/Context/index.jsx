@@ -27,8 +27,6 @@ export default function GlobalState({ children }) {
     }
   }
 
-console.log(loading, recipeList);
-
   return (
     <GlobalContext.Provider
       value={{ SearchParams, loading, recipeList, setSearchParams, handleSubmit }}
